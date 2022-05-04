@@ -1,4 +1,10 @@
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    paths:
+      - '.github/workflows/**'
+      - '*.js'
+      - 'samoklava.yml'
+  workflow_dispatch:
 
 name: Build
 jobs:
