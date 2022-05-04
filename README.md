@@ -10,6 +10,6 @@ extra key and no TRRS. I've removed TRRS to support diode-less build for wireles
 
 Top outlines matches Exactly the original sweep outlines, bottom outlines are adjusted to the extra key.
 
-Gerber files are available for the left and right halves. You can find them in the GitHub actions panel.
+Gerber files are available. You can find them in the GitHub actions panel.
 
 See the [workflow](.github/workflows/build.yml) or the [Makefile](Makefile) for more details.
