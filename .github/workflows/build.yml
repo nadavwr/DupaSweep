@@ -3,6 +3,7 @@ on:
     paths:
       - '.github/workflows/**'
       - '*.js'
+      - 'package.json'
       - 'dupa_sweep.yml'
   workflow_dispatch:
 
