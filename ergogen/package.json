@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "gen": "../node_modules/.bin/ergogen dupa_sweep.yaml"
+        "gen": "./node_modules/.bin/ergogen dupa_sweep.yaml"
     },
     "dependencies": {
         "ergogen": "github:soundmonster/ergogen#samoklava"
