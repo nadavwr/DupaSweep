@@ -1,0 +1,144 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/ext_power.h>
+
+
+&mt {
+    tapping-term-ms = <185>;
+    flavor = "tap-preferred";
+};
+
+&lt {
+    tapping-term-ms = <185>;
+    flavor = "tap-preferred";
+};
+
+/ {
+                br_vim: br_vim {
+                    wait-ms = <40>;
+                    tap-ms = <40>;
+                    label = "br_vim";
+                    compatible = "zmk,behavior-macro";
+                    #binding-cells = <0>;
+                    bindings
+                        = <&macro_tap &kp SPACE>
+                        , <&macro_tap &kp R>
+                        ;
+                };
+            };
+
+
+        combos {
+            compatible = "zmk,combos";
+            combo_esc {
+                timeout-ms = <50>;
+                key-positions = <0 1>;
+                bindings = <&kp TAB>;
+            };
+        };
+
+        behaviors {
+            mthold: mt_hold_preffered {
+                compatible = "zmk,behavior-hold-tap";
+                #binding-cells = <2>;
+                label = "MT HOLD";
+                tapping-term-ms = <185>;
+                flavor = "hold-preferred";
+                bindings = <&kp>, <&kp>;
+            };
+
+            lthold: lt_hold_preffered {
+                label = "LT HOLD";
+                compatible = "zmk,behavior-hold-tap";
+                #binding-cells = <2>;
+                tapping-term-ms = <2000>;
+                flavor = "hold-preferred";
+                bindings = <&mo>, <&kp>;
+            };
+        };
+
+        keymap {
+                compatible = "zmk,keymap";
+
+                default_layer {
+                        bindings = <
+// -------------------------------------------------------------------------------------------------
+// |   Q   |  W  |    E    |     R     |      T      |     Y     |     U     |    I    |  O  |  P  |
+// |   A   |  S  |    D    |     F     |      G      |     H     |     J     |    K    |  L  |  ;  |
+// |  2 Z  |  X  |    C    |  LGUI V   |      B      |     N     |  LGUI M   |    ,    |  .  |  /  |
+//               |  LCTRL  |  4 SPACE  |  LSHFT ESC  |  2 BSPC   |     1     |  RALT   |
+// -------------------------------------------------------------------------------------------------
+&kp Q    &kp W  &kp E      &kp R        &kp T              &kp Y            &kp U        &kp I      &kp O    &kp P
+&kp A    &kp S  &kp D      &kp F        &kp G              &kp H            &kp J        &kp K      &kp L    &kp SEMI
+&lt 2 Z  &kp X  &kp C      &mt LGUI V   &kp B              &kp N            &mt LGUI M   &kp COMMA  &kp DOT  &kp FSLH
+                &kp LCTRL  &lt 4 SPACE  &mthold LSHFT ESC  &lthold 2 BSPC   &mo 1        &kp RALT
+                        >;
+                };
+
+                sym_layer {
+                        bindings = <
+// -----------------------------------------------------------------------
+// |  ~  |  @  |  #  |  $  |  %  |    '    |  [  |    ]    |     |       |
+// |  :  |  _  |  !  |  =  |  >  |    &    |  (  |    )    |  |  |  RET  |
+// |  `  |  "  |  *  |  -  |     |    \    |  {  |    }    |  '  |   3   |
+//             |  0  |  +  |     |  BSPC   |     |  LCTRL  |
+// -----------------------------------------------------------------------
+&kp TILDE  &kp AT     &kp HASH   &kp DLLR   &kp PRCNT  &kp APOS   &kp LBKT   &kp RBKT   &trans     &trans
+&kp COLON  &kp UNDER  &kp EXCL   &kp EQUAL  &kp GT     &kp AMPS   &kp LPAR   &kp RPAR   &kp PIPE   &kp RET
+&kp GRAVE  &kp DQT    &kp STAR   &kp MINUS  &trans     &kp BSLH   &kp LBRC   &kp RBRC   &kp APOS   &to 3
+                      &to 0      &kp PLUS   &trans     &kp BSPC   &trans     &kp LCTRL
+                        >;
+                };
+
+                num_layer {
+                        bindings = <
+// -------------------------------------------------------------------
+// |     |     |  -  |    +    |     |     |  7  |  8  |  9  |       |
+// |     |     |  1  |    0    |     |     |  4  |  5  |  6  |  RET  |
+// |     |     |  ,  |    .    |  =  |  0  |  1  |  2  |  3  |   /   |
+//             |  0  |  LGUI   |     |     |     |     |
+// -------------------------------------------------------------------
+&trans   &trans   &kp MINUS  &kp PLUS   &trans     &trans   &kp N7   &kp N8   &kp N9   &trans
+&trans   &trans   &kp N1     &kp N0     &trans     &trans   &kp N4   &kp N5   &kp N6   &kp RET
+&trans   &trans   &kp COMMA  &kp DOT    &kp EQUAL  &kp N0   &kp N1   &kp N2   &kp N3   &kp FSLH
+                  &to 0      &kp LGUI   &trans     &trans   &trans   &trans
+                        >;
+                };
+
+                nav_layer {
+                        bindings = <
+// -------------------------------------------------------------------------------------------------------------
+// |  &bootloader  |  ⍉  |  ⍉  |  ⍉  |  ⍉  |  LG(LBKT)   |  LC(LS(TAB))  |  RC(TAB)  |  LG(RBKT)   |    RET    |
+// |    &reset     |  ⍉  |  ⍉  |  ⍉  |  ⍉  |      ⬅      |       ⬇       |     ⬆     |      ⮕      |    RET    |
+// |  &none        |  ⍉  |  ⍉  |  ⍉  |  ⍉  |      ⍉      |       ⍉       |    F13    |     F15     |  EP_OFF   |
+//                       |  0  |  ⍉  |  ⍉  |      ⍉      |     LGUI      |     ⍉     |
+// -------------------------------------------------------------------------------------------------------------
+&bootloader  &none  &none  &none  &none  &kp LG(LBKT)   &kp LC(LS(TAB))  &kp RC(TAB)  &kp LG(RBKT)   &kp RET
+&reset       &none  &none  &none  &none  &kp LEFT       &kp DOWN         &kp UP       &kp RIGHT      &kp RET
+&none        &none  &none  &none  &none  &none          &none            &kp F13      &kp F15        &ext_power EP_OFF
+                    &to 0  &none  &none  &none          &kp LGUI         &none
+                        >;
+                };
+
+                nav_hold_layer {
+                        bindings = <
+// -----------------------------------------------------------------------------------------------------------------------------------------
+// |     TAB     |  LG(LS(N4))   |    LG(F)    |  LC(SPACE)  |     |  LA(LEFT)   |  LC(LA(LG(U)))  |  LC(LA(LG(I)))  |  LA(RIGHT)  |       |
+// |    LG(A)    |    &br_vim    |  LG(GRAVE)  |     F18     |     |      ⬅      |        ⬇        |        ⬆        |      ⮕      |  RET  |
+// |  LC(GRAVE)  |    LG(N1)     |    LG(C)    |    LG(V)    |     |             |                 |                 |   LA(DOT)   |       |
+//                               |             |    LGUI     |     |  LA(BSPC)   |      LGUI       |   LG(LS(N5))    |
+// -----------------------------------------------------------------------------------------------------------------------------------------
+&kp TAB        &kp LG(LS(N4))   &kp LG(F)      &kp LC(SPACE)  &trans   &kp LA(LEFT)   &kp LC(LA(LG(U)))  &kp LC(LA(LG(I)))  &kp LA(RIGHT)  &trans
+&kp LG(A)      &br_vim          &kp LG(GRAVE)  &kp F18        &trans   &kp LEFT       &kp DOWN           &kp UP             &kp RIGHT      &kp RET
+&kp LC(GRAVE)  &kp LG(N1)       &kp LG(C)      &kp LG(V)      &trans   &trans         &trans             &trans             &kp LA(DOT)    &trans
+                                &trans         &kp LGUI       &trans   &kp LA(BSPC)   &kp LGUI           &kp LG(LS(N5))
+                        >;
+                };
+        };
+};
+
