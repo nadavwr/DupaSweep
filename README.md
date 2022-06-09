@@ -12,4 +12,4 @@ Top outlines matches Exactly the original sweep outlines, bottom outlines are ad
 
 Gerber files are available. You can find them in the GitHub actions panel.
 
-See the [workflow](.github/workflows/build.yml) or the [Makefile](Makefile) for more details.
+See the [workflow](.github/workflows/build.yml) or the [Makefile](ergogen/Makefile) for more details.

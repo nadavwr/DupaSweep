@@ -86,7 +86,7 @@ points:
         ref: matrix_inner_bottom
         shift: [ 10.5, -25.06 ]
       columns:
-        far:
+        right:
           origin: [-cx/2, -cy/2]
           stagger: 5.64
           spread: -3.04
@@ -94,7 +94,7 @@ points:
           key:
             column_net: P2
             column_mark: R
-        near:
+        middle:
           origin: [-cx/2, -cy/2]
           rotate: 15
           stagger: -4.72
@@ -102,7 +102,7 @@ points:
           key:
             column_net: P0
             column_mark: M
-        home:
+        left:
           origin: [-cx/2, -cy/2]
           stagger: -4.4
           spread: -cx + 0.6
@@ -159,22 +159,22 @@ outlines:
         points:
           - ref: matrix_middle_bottom
             shift: [cx/2, -cy/2]
-          - ref: thumbfan_far_thumb
+          - ref: thumbfan_right_thumb
             shift: [cx/2, cy/2]
-          - ref: thumbfan_far_thumb
+          - ref: thumbfan_right_thumb
             shift: [cx, -cy/2]
-          - ref: thumbfan_far_thumb
+          - ref: thumbfan_right_thumb
             shift: [-2.1cx, -4cy]
     right_cut:
       - type: polygon
         points:
-          - ref: thumbfan_far_thumb
+          - ref: thumbfan_right_thumb
             shift: [cx/2, -cy/2]
-          - ref: thumbfan_far_thumb
+          - ref: thumbfan_right_thumb
             shift: [cx/2, 5cy]
-          - ref: thumbfan_far_thumb
+          - ref: thumbfan_right_thumb
             shift: [3cx, 5cy]
-          - ref: thumbfan_far_thumb
+          - ref: thumbfan_right_thumb
             shift: [3cx, -cy/2]
 
     arc_top_left: #todo check with top left corner shift
@@ -237,9 +237,9 @@ outlines:
             shift: [cx/2, cy/2]
           - ref: matrix_inner_bottom
             shift: [cx/2, -cy/2]
-          - ref: thumbfan_far_thumb
+          - ref: thumbfan_right_thumb
             shift: [cx/2, cy/2]
-          - ref: thumbfan_far_thumb
+          - ref: thumbfan_right_thumb
             shift: [cx/2, -15]
           - ref: matrix_pinky_bottom
             shift: [-cx/2, -1.5cy]
