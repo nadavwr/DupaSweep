@@ -8,6 +8,9 @@ left | right
 Without keycaps:
 ![without keycaps](images/without-keycaps.jpg)
 
+This keyboard was generated using [Ergogen](https://github.com/ergogen/ergogen).
+If you want to make some changes look in above repository for details.
+
 A 5x3 split keyboard with 3 thumb keys. There is nothing unique about the keyboard layout. It's practically choc mini Sweep keyboard with
 extra key and no TRRS. I've removed TRRS to support diode-less build for wireless option.
 
