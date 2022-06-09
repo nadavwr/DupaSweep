@@ -3,7 +3,8 @@ on:
     paths:
       - '.github/workflows/**'
       - '*.js'
-      - 'samoklava.yml'
+      - 'package.json'
+      - 'dupa_sweep.yml'
   workflow_dispatch:
 
 name: Build
@@ -19,7 +20,9 @@ jobs:
         with:
           node-version: 17.x
       - name: Install dependencies
-        run: npm install
+        run: |
+          cp -r ergogen/* ./
+          npm install
       - name: Generate unrouted PCBs
         run: |
           cp ./promicro.js ./node_modules/ergogen/src/footprints
