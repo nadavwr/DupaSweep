@@ -10,7 +10,7 @@ points:
       choc:
         type: chocmini
         nets:
-          from: =column_net
+          from: =name
           to: GND
         params:
           keycaps: true
@@ -20,60 +20,25 @@ points:
       columns:
         pinky:
           origin: [ 0, -1cy ]
-          row_overrides:
-            bottom:
-              column_net: P21
-            home:
-              column_net: P20
-            top:
-              column_net: P19
         ring:
           rotate: 0
-          stagger: 12.23
+          stagger: 0.25cy
           spread: cx
-          row_overrides:
-            bottom:
-              column_net: P18
-            home:
-              column_net: P15
-            top:
-              column_net: P14
         middle:
           origin: [ 0, -1cy ]
           rotate: 0
-          stagger: 4.46
+          stagger: 0.125cy
           spread: cx
-          row_overrides:
-            bottom:
-              column_net: P16
-            home:
-              column_net: P10
-            top:
-              column_net: P9
         index:
           origin: [ 0, -1cy ]
           rotate: 0
-          stagger: -4.86
+          stagger: -0.125cy
           spread: cx
-          row_overrides:
-            bottom:
-              column_net: P8
-            home:
-              column_net: P7
-            top:
-              column_net: P6
         inner:
           origin: [ 0, -1cy ]
           rotate: 0
           spread: cx
-          stagger: -1.88
-          row_overrides:
-            bottom:
-              column_net: P5
-            home:
-              column_net: P4
-            top:
-              column_net: P3
+          stagger: -0.125cy
       rows:
         bottom:
           padding: 1ky
@@ -92,7 +57,6 @@ points:
           spread: -3.04
           rotate: -30
           key:
-            column_net: P2
             column_mark: R
         middle:
           origin: [-cx/2, -cy/2]
@@ -100,7 +64,6 @@ points:
           stagger: -4.72
           spread: -cx + 0.27
           key:
-            column_net: P0
             column_mark: M
         left:
           origin: [-cx/2, -cy/2]
@@ -108,7 +71,6 @@ points:
           spread: -cx + 0.6
           rotate: 14
           key:
-            column_net: P1
             column_mark: P
       rows:
         thumb:
@@ -336,32 +298,3 @@ pcbs:
         nets:
           from: GND
           to: RST
-      broom:
-        type: broom
-        anchor:
-          shift: [23.368, -2.54]
-          rotate: 180
-      broom_mirror:
-        type: broom
-        params:
-          mirror: true
-        anchor:
-          shift: [23.368, -2.54]
-          rotate: 180
-      info_l:
-        type: text
-        anchor:
-          shift: [87.376, 9.11]
-          rotate: -5
-        params:
-          text: "Dupa Sweep\\nby KostkaBrukowa"
-          justify: left
-      info_r:
-        type: text
-        anchor:
-          shift: [87.376, 9.11]
-          rotate: -5
-        params:
-          layer: B.SilkS
-          text: "Dupa Sweep\\nby KostkaBrukowa"
-          justify: right mirror
