@@ -1,14 +1,14 @@
 units:
-  kx: cx
-  ky: cy
+  kx: U
+  ky: U
   px: 2
   py: 2
   ring_rotate: -10
 points:
   key:
     footprints:
-      choc:
-        type: chocmini
+      mx:
+        type: mx
         nets:
           from: =name
           to: GND
