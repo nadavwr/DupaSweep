@@ -14,31 +14,31 @@ points:
           to: GND
         params:
           keycaps: true
-          reverse: true
+          reverse: false
   zones:
     matrix:
       columns:
         pinky:
-          origin: [ 0, -1cy ]
+          origin: [ 0, -1ky ]
         ring:
           rotate: 0
-          stagger: 0.25cy
-          spread: cx
+          stagger: ky/4
+          spread: kx
         middle:
-          origin: [ 0, -1cy ]
+          origin: [ 0, -1ky ]
           rotate: 0
-          stagger: 0.125cy
-          spread: cx
+          stagger: ky/8
+          spread: kx
         index:
-          origin: [ 0, -1cy ]
+          origin: [ 0, -1ky ]
           rotate: 0
-          stagger: -0.125cy
-          spread: cx
+          stagger: -ky/8
+          spread: kx
         inner:
-          origin: [ 0, -1cy ]
+          origin: [ 0, -1ky ]
           rotate: 0
-          spread: cx
-          stagger: -0.125cy
+          spread: kx
+          stagger: -ky/8
       rows:
         bottom:
           padding: 1ky
@@ -49,29 +49,34 @@ points:
     thumbfan:
       anchor:
         ref: matrix_inner_bottom
-        shift: [ 10.5, -25.06 ]
+        shift: [ 0.55kx, -1.45ky ]
       columns:
-        right:
-          origin: [-cx/2, -cy/2]
-          stagger: 5.64
-          spread: -3.04
-          rotate: -30
-          key:
-            column_mark: R
-        middle:
-          origin: [-cx/2, -cy/2]
-          rotate: 15
-          stagger: -4.72
-          spread: -cx + 0.27
-          key:
-            column_mark: M
         left:
-          origin: [-cx/2, -cy/2]
-          stagger: -4.4
-          spread: -cx + 0.6
-          rotate: 14
-          key:
-            column_mark: P
+          spread: -2kx
+          stagger: 0.375ky
+        middle:
+          origin: [-kx/2, -ky/2]
+          rotate: -15
+          spread: kx + 0.2
+        right:
+          origin: [-kx/2, -ky/2]
+          rotate: -30
+          spread: kx + 0.1
+        #right:
+        #  origin: [-cx/2, -cy/2]
+        #  stagger: 5.64
+        #  spread: -3.04
+        #  rotate: -30
+        #middle:
+        #  origin: [-cx/2, -cy/2]
+        #  rotate: 15
+        #  stagger: -4.72
+        #  spread: -cx + 0.27
+        #left:
+        #  origin: [-cx/2, -cy/2]
+        #  stagger: -4.4
+        #  spread: -cx + 0.6
+        #  rotate: 14
       rows:
         thumb:
           padding: 0
@@ -220,7 +225,7 @@ outlines:
       main:
         type: keys
         side: left
-        size: [kx, ky]
+        size: [cx, cy]
         bound: false
         corner: 1
     base_outline:
