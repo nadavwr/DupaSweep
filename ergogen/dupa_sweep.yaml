@@ -1,7 +1,7 @@
 units:
   mcux: 18
   mcuy: 33
-  pad: 2
+  pad: 3
   hole: 14
 
 points:
@@ -75,22 +75,29 @@ outlines:
         fillet: 4pad
     
     mcu:
-      - type: rectangle
-        anchor.ref: matrix_inner_top
-        anchor.shift: [+U/2, +U/2-mcuy]
-        size: [mcux, mcuy]
+      - type: polygon
+        points: [
+          {ref: matrix_middle_top,   shift: [0,                +U/2+pad]},
+          {ref: matrix_inner_top,    shift: [+U/2+pad,         +U/2+pad]},
+          {ref: matrix_inner_top,    shift: [+U/2+pad+mcux,    +U/2+pad]},
+          {ref: matrix_inner_top,    shift: [+U/2+pad+mcux,    +U/2-0pad-mcuy]},
+          {ref: matrix_inner_top,    shift: [+U/2-pad,         +U/2-0pad-mcuy]},
+          {ref: matrix_inner_top,    shift: [+U/2-pad,         +U/2-pad]},
+        ]
 
     plate: [plated, -keys]
 
-    preview: [plated, -keys, mcu]
+    perimeter: [plated, mcu]
+
+    preview: [plated, mcu, -keys]
 
 pcbs.simple_split:
-  outlines.main.outline: board
+  outlines.main.outline: perimeter
   footprints:
     - type: promicro
       anchor:
-        - ref: matrix_inner_home
-          shift: [mcux, 0.5U+pad]
+        - ref: matrix_inner_top
+          shift: [(U+mcux+pad)/2, (U-mcuy)/2]
           rotate: -90
       nets:
         P0: matrix_pinky_top
@@ -111,3 +118,56 @@ pcbs.simple_split:
         P7: thumb_inner
         P8: thumb_middle
         P9: thumb_far
+
+      # slider_l:
+      #   type: slider
+      #   anchor:
+      #     ref:
+      #       - matrix_inner_bottom
+      #     shift: [30, 0]
+      #     rotate: 270
+      #   params:
+      #     side: F
+      #   nets:
+      #     from: Braw
+      #     to: Bplus
+
+      # mcu:
+      #   type: holyiot
+      #   params:
+      #     underside_pads: false
+      #   anchor:
+      #     ref: alphas_middle_home
+      #     shift: [60.59, -17.9]
+      #     rotate: 270
+      #   nets:
+      #     P018: RST
+      # usbc:
+      #   type: usbc
+      #   anchor:
+      #     <<: *usbanchor
+      #     shift: [usb_cutout_x + 6.24, usb_cutout_y + 5.15]
+      #   nets:
+      #     from: GND
+      # reset:
+      #   type: tactswitch
+      #   anchor:
+      #     ref: alphas_middle_top
+      #     shift: [60, -5]
+      #     rotate: 74.5 + 180
+      #   nets:
+      #     from: GND
+      #     to: RST
+# on_off_switch:
+#   type: slider
+#   nets:
+#     from: GND
+#     to: P01
+#   anchor:
+#     ref: matrix_inner_home
+#     shift: [30, -27]
+#     rotate: -90
+#   # params:
+#   # TODO: Add ability for this to be reversible with vias in pads in footprint
+#   #   reverse: true
+#   #   symmetric: true
